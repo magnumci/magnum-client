@@ -1,29 +1,31 @@
-# Magnum::Client
+# magnum-client
 
-TODO: Write a gem description
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'magnum-client'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install magnum-client
+Ruby wrapper for [Magnum CI](https://magnum-ci.com) API
 
 ## Usage
 
-TODO: Write usage instructions here
+Examples:
 
-## Contributing
+```ruby
+require "magnum/client"
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+# Setup API client
+client = Magnum::Client.new("api_token")
+
+# Get user profile
+client.get_profile
+
+# Get projects
+client.get_projects
+
+# Get a single project
+client.get_project(12345)
+```
+
+## Testing
+
+To run test suite execute:
+
+```
+bundle exec rake test
+```
