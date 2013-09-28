@@ -20,7 +20,7 @@ module Magnum::Client
       json = JSON.parse(response.body)
 
       if response.success?
-        json
+        Hashie::Mash.new(json)
       else
         raise Error, json["error"]
       end
