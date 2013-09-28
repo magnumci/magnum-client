@@ -1,12 +1,12 @@
+$:.unshift File.expand_path("../..", __FILE__)
+
 require "simplecov"
 SimpleCov.start
-
-$:.unshift File.expand_path("../..", __FILE__)
 
 require "webmock"
 require "webmock/rspec"
 require "json"
-require "lib/magnum/client"
+require "magnum/client"
 
 def fixture_path(filename=nil)
   path = File.expand_path("../fixtures", __FILE__)
