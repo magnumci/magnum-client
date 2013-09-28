@@ -20,7 +20,7 @@ module Magnum::Client
       json = JSON.parse(response.body)
 
       if response.success?
-        Hashie::Mash.new(json)
+        format_response(json)
       else
         raise Error, json["error"]
       end
@@ -31,6 +31,15 @@ module Magnum::Client
         c.use(Faraday::Request::UrlEncoded)
         c.use(Faraday::Response::Logger) if @debug
         c.adapter(Faraday.default_adapter)
+      end
+    end
+
+    def format_response(data)
+      case data
+      when Array
+        data.map { |obj| Hashie::Mash.new(obj) }
+      else
+        Hashie::Mash.new(data)
       end
     end
   end
