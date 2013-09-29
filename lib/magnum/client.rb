@@ -14,7 +14,7 @@ module Magnum
     autoload :Endpoints,  "magnum/client/endpoints"
 
     def self.new(api_key=nil)
-      Magnum::Client::Connection.new(api_key=nil)
+      Magnum::Client::Connection.new(api_key)
     end
   end
 end
