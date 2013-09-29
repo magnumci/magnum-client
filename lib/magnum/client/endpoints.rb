@@ -19,6 +19,17 @@ module Magnum::Client
       request(:get, "projects/#{id}")
     end
 
+    # Create a new project
+    #
+    # Options:
+    #   :name       - Project name
+    #   :source_url - Code clone url
+    #   :provider   - Code provider (optional, defaults to "github")
+    #
+    def create_project(options={})
+      request(:post, "projects", project: options)
+    end
+
     def project_builds(project_id)
       request(:get, "projects/#{project_id}/builds")
     end
