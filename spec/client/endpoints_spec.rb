@@ -3,6 +3,36 @@ require "spec_helper"
 describe Magnum::Client::Endpoints do
   let(:connection) { Magnum::Client::Connection.new("token") }
 
+  describe "#authenticate" do
+    context "blank credentials" do
+      before do
+        stub_api(:post, "/authenticate?email=&password=",
+          status: 400,
+          body: fixture("auth_credentials_required.json")
+        )
+      end
+
+      it "returns error" do
+        expect { connection.authenticate("", "") }.
+          to raise_error Magnum::Client::Error, "User login or email is required"
+      end
+    end
+
+    context "invalid credentials" do
+      before do
+        stub_api(:post, "/authenticate?email=foo&password=bar",
+          status: 400,
+          body: fixture("auth_invalid_credentials.json")
+        )
+      end
+
+      it "returns error" do
+        expect { connection.authenticate("foo", "bar") }.
+          to raise_error Magnum::Client::Error, "Invalid credentials"
+      end
+    end
+  end
+
   describe "#profile" do
     before do
       stub_api(:get, "/profile",
