@@ -42,6 +42,7 @@ client.update_project(
 
 # Delete existing project
 client.delete_project(12345)
+```
 
 ## Testing
 
