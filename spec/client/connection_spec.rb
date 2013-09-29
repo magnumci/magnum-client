@@ -29,7 +29,7 @@ describe Magnum::Client::Connection do
 
     it "raises error" do
       expect { connection.get("profile") }.
-        to raise_error Magnum::Client::Error, "API key required"
+        to raise_error Magnum::Client::AuthError, "API key required"
     end
   end
 
@@ -44,7 +44,7 @@ describe Magnum::Client::Connection do
 
     it "raises error" do
       expect { connection.get("profile") }.
-        to raise_error Magnum::Client::Error, "API key is invalid"
+        to raise_error Magnum::Client::AuthError, "API key is invalid"
     end
   end
 end
