@@ -30,6 +30,10 @@ module Magnum::Client
       request(:post, "projects", project: options)
     end
 
+    def delete_project(project_id)
+      request(:delete, "projects/#{project_id}")
+    end
+
     def project_builds(project_id)
       request(:get, "projects/#{project_id}/builds")
     end
