@@ -3,7 +3,7 @@ require "spec_helper"
 describe Magnum::Client::Endpoints do
   let(:connection) { Magnum::Client::Connection.new("token") }
 
-  describe "#get_profile" do
+  describe "#profile" do
     before do
       stub_api(:get, "/profile",
         headers: {"X-API-KEY" => "token"},
@@ -13,7 +13,7 @@ describe Magnum::Client::Endpoints do
     end
 
     it "returns user profile" do
-      profile = connection.get_profile
+      profile = connection.profile
 
       expect(profile.id).to eq 1
       expect(profile.email).to eq "dan.sosedoff@gmail.com"
@@ -23,7 +23,7 @@ describe Magnum::Client::Endpoints do
     end
   end
 
-  describe "#get_projects" do
+  describe "#projects" do
     before do
       stub_api(:get, "/projects",
         headers: {"X-API-KEY" => "token"},
@@ -33,14 +33,14 @@ describe Magnum::Client::Endpoints do
     end
 
     it "returns collection of projects" do
-      projects = connection.get_projects
+      projects = connection.projects
 
       expect(projects).to be_an Array
       expect(projects.size).to eq 1
     end
   end
 
-  describe "#get_project" do
+  describe "#project" do
     before do
       stub_api(:get, "/projects/1",
         headers: {"X-API-KEY" => "token"},
@@ -56,7 +56,7 @@ describe Magnum::Client::Endpoints do
     end
 
     it "returns project details" do
-      project = connection.get_project(15)
+      project = connection.project(15)
 
       expect(project.id).to eq 15
       expect(project.provider).to eq "github"
