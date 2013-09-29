@@ -26,7 +26,7 @@ module Magnum::Client
       if response.success?
         format_response(json)
       else
-        raise Error, json["error"]
+        handle_response_error(response, json)
       end
     end
 
@@ -44,6 +44,15 @@ module Magnum::Client
         data.map { |obj| Hashie::Mash.new(obj) }
       else
         Hashie::Mash.new(data)
+      end
+    end
+
+    def handle_response_error(response, json)
+      case response.status
+      when 401
+        raise AuthError, json["error"]
+      else
+        raise Error, json["error"]
       end
     end
   end
