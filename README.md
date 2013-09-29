@@ -26,7 +26,6 @@ client.projects
 
 # Get a single project
 client.project(12345)
-```
 
 # Create a new project
 client.create_project(
