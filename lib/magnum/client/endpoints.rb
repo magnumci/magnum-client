@@ -1,5 +1,12 @@
 module Magnum::Client
   module Endpoints
+    def authenticate(email, password)
+      request(:post, "authenticate", {
+        email: email,
+        password: password
+      })
+    end
+
     def get_profile
       request(:get, "profile")
     end

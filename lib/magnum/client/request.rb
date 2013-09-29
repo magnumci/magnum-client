@@ -10,7 +10,11 @@ module Magnum::Client
 
     def request(method, path, params={})
       path    = "/api/v1/#{path}"
-      headers = { "X-API-KEY" => @api_key }
+      headers = {"Accept" => "application/json"}
+
+      if @api_key
+        headers["X-API-KEY"] = @api_key
+      end
 
       response = endpoint(API_BASE).send(method, path, params) do |request|
         request.headers = headers
