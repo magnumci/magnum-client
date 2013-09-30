@@ -19,6 +19,10 @@ module Magnum::Client
       request(:get, "projects/#{id}")
     end
 
+    def project_config(id)
+      request(:get, "projects/#{id}/config")
+    end
+
     def create_project(options={})
       request(:post, "projects", project: options)
     end
