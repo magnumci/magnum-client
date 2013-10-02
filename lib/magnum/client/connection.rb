@@ -1,7 +1,7 @@
 module Magnum
   module Client
     class Connection
-      attr_reader :api_key
+      attr_accessor :api_key
 
       include Magnum::Client::Request
       include Magnum::Client::Endpoints
