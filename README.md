@@ -1,4 +1,3 @@
-```
 # magnum-client
 
 Ruby wrapper for [Magnum CI](https://magnum-ci.com) API
