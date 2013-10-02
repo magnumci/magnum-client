@@ -1,4 +1,4 @@
-module Magnum::Client
+class Magnum::Client
   module Request
     API_BASE = "https://magnum-ci.com"
 

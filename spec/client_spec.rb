@@ -1,12 +1,50 @@
 require "spec_helper"
 
 describe Magnum::Client do
-  describe ".new" do
-    it "returns Magnum::Client::Connection instance" do
-      client = Magnum::Client.new("foobar")
+  let(:connection) { Magnum::Client.new("token") }
 
-      expect(client).to be_a Magnum::Client::Connection
-      expect(client.api_key).to eq "foobar"
+  describe "invalid endpoint" do
+    before do
+      stub_api(:get, "/foobar",
+        headers: {"X-API-KEY" => "token"},
+        status: 404,
+        body: fixture("invalid_endpoint.json")
+      )
+    end
+
+    it "raises error" do
+      expect { connection.get("foobar") }.
+        to raise_error Magnum::Client::Error, "Invalid endpoint"
+    end
+  end
+
+  describe "missing api key" do
+    before do
+      stub_api(:get, "/profile",
+        headers: {"X-API-KEY" => ""},
+        status: 401, 
+        body: fixture("key_required.json")
+      )
+    end
+
+    it "raises error" do
+      expect { connection.get("profile") }.
+        to raise_error Magnum::Client::AuthError, "API key required"
+    end
+  end
+
+  describe "invalid api key" do
+    before do
+      stub_api(:get, "/profile",
+        headers: {"X-API-KEY" => "token"},
+        status: 401, 
+        body: fixture("invalid_key.json")
+      )
+    end
+
+    it "raises error" do
+      expect { connection.get("profile") }.
+        to raise_error Magnum::Client::AuthError, "API key is invalid"
     end
   end
 end

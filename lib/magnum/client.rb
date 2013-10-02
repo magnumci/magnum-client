@@ -3,18 +3,22 @@ require "json"
 require "hashie"
 
 require "magnum/client/version"
+require "magnum/client/request"
+require "magnum/client/endpoints"
 
 module Magnum
-  module Client
-    class Error < StandardError ; end
+  class Client
+    attr_accessor :api_key, :debug
+
+    include Magnum::Client::Request
+    include Magnum::Client::Endpoints
+
+    class Error     < StandardError ; end
     class AuthError < Error ; end
 
-    autoload :Connection, "magnum/client/connection"
-    autoload :Request,    "magnum/client/request"
-    autoload :Endpoints,  "magnum/client/endpoints"
-
-    def self.new(api_key=nil)
-      Magnum::Client::Connection.new(api_key)
+    def initialize(api_key=nil)
+      @api_key = api_key
+      @debug = false
     end
   end
 end

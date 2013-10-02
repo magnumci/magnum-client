@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe Magnum::Client::Endpoints do
-  let(:connection) { Magnum::Client::Connection.new("token") }
+  let(:connection) { Magnum::Client.new("token") }
 
   describe "#authenticate" do
     context "blank credentials" do

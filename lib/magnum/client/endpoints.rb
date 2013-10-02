@@ -1,4 +1,4 @@
-module Magnum::Client
+class Magnum::Client
   module Endpoints
     def authenticate(email, password)
       request(:post, "authenticate", {
