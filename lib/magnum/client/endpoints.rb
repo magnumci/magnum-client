@@ -8,47 +8,47 @@ module Magnum::Client
     end
 
     def profile
-      request(:get, "profile")
+      get("profile")
     end
 
     def update_profile(attributes={})
-      request(:put, "profile", user: attributes)
+      put("profile", user: attributes)
     end
 
     def projects
-      request(:get, "projects")
+      get("projects")
     end
 
     def project(id)
-      request(:get, "projects/#{id}")
+      get("projects/#{id}")
     end
 
     def project_config(id)
-      request(:get, "projects/#{id}/config")
+      get("projects/#{id}/config")
     end
 
     def create_project(options={})
-      request(:post, "projects", project: options)
+      post("projects", project: options)
     end
 
     def update_project(project_id, options={})
-      request(:put, "projects/#{project_id}", project: options)
+      put("projects/#{project_id}", project: options)
     end
 
     def delete_project(project_id)
-      request(:delete, "projects/#{project_id}")
+      delete("projects/#{project_id}")
     end
 
     def project_builds(project_id)
-      request(:get, "projects/#{project_id}/builds")
+      get("projects/#{project_id}/builds")
     end
 
     def project_build(project_id, build_id)
-      request(:get, "projects/#{project_id}/builds/#{build_id}")
+      get("projects/#{project_id}/builds/#{build_id}")
     end
 
     def delete_build(project_id, build_id)
-      request(:delete, "projects/#{project_id}/builds/#{build_id}")
+      delete("projects/#{project_id}/builds/#{build_id}")
     end
   end
 end
