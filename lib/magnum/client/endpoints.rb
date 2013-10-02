@@ -11,6 +11,10 @@ module Magnum::Client
       request(:get, "profile")
     end
 
+    def update_profile(attributes={})
+      request(:put, "profile", user: attributes)
+    end
+
     def projects
       request(:get, "projects")
     end
