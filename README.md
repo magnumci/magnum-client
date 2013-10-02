@@ -1,3 +1,4 @@
+```
 # magnum-client
 
 Ruby wrapper for [Magnum CI](https://magnum-ci.com) API
@@ -27,21 +28,44 @@ $ gem install magnum-client
 
 ## Usage
 
-Examples:
+Require client:
 
 ```ruby
 require "magnum/client"
+```
 
-# Setup API client
+### Authentication
+
+Connection with existing API token:
+
+```
 client = Magnum::Client.new("api_token")
+```
 
-# Or authenticate
+Authenticate user:
+
+```ruby
 client = Magnum::Client.new
 client.authenticate("email", "password")
+```
 
-# Get user profile
+### User Profile
+
+Get user profile:
+
+```ruby
 client.profile
+```
 
+Update user profile:
+
+```ruby
+client.update_profile(login: "jimi", email: "jimi@hendrix.com")
+```
+
+### Projects
+
+```ruby
 # Get projects
 client.projects
 
