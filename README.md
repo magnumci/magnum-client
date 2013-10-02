@@ -9,7 +9,7 @@ Ruby wrapper for [Magnum CI](https://magnum-ci.com) API
 Add this line to your application's Gemfile:
 
 ```
-gem 'rack-reporter'
+gem "magnum-client"
 ```
 
 And then execute:
