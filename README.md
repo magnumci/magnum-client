@@ -4,6 +4,27 @@ Ruby wrapper for [Magnum CI](https://magnum-ci.com) API
 
 ![Build Status](https://magnum-ci.com/status/6bd1331c22d63cad996a90bc02710106.png)
 
+## Install
+
+Add this line to your application's Gemfile:
+
+```
+gem 'rack-reporter'
+```
+
+And then execute:
+
+```
+bundle
+```
+
+Or install it yourself as:
+
+```
+$ gem install magnum-client
+
+```
+
 ## Usage
 
 Examples:
