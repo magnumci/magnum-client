@@ -33,7 +33,13 @@ module Magnum
         payload: data
       )
 
-      response.success?
+      result = JSON.load(response.body)
+
+      if response.success?
+        true
+      else
+        raise Error, result["error"]
+      end
     end
   end
 end
