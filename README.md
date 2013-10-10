@@ -91,7 +91,7 @@ client.delete_project(12345)
 
 Send commit payload:
 
-```
+```ruby
 Magnum::Client.send_payload("project token", "provider", "data")
 ```
 
