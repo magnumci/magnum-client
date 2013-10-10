@@ -87,6 +87,14 @@ client.update_project(
 client.delete_project(12345)
 ```
 
+### Commit Payloads
+
+Send commit payload:
+
+```
+Magnum::Client.send_payload("project token", "provider", "data")
+```
+
 ## Testing
 
 To run test suite execute:
