@@ -1,6 +1,6 @@
 # magnum-client
 
-Ruby wrapper for [Magnum CI](https://magnum-ci.com) API
+Ruby API wrapper for [Magnum CI](https://magnum-ci.com)
 
 ![Build Status](https://magnum-ci.com/status/6bd1331c22d63cad996a90bc02710106.png)
 
