@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Magnum::Client::VERSION
   spec.authors       = ["Dan Sosedoff"]
   spec.email         = ["dan.sosedoff@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{API client for Magnum CI}
+  spec.summary       = %q{API client for Magnum CI}
   spec.homepage      = ""
   spec.license       = "MIT"
 
