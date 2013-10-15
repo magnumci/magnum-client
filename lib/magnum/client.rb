@@ -28,7 +28,7 @@ module Magnum
     # @param [Hash] payload data
     #
     def self.send_payload(project_token, provider, data)
-      response = Faraday.post("https://magnum-ci.com/api/v1/payload/#{provider}",
+      response = Faraday.post("https://magnum-ci.com/receive/#{provider}",
         token: project_token,
         payload: data
       )
