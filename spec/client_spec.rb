@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe Magnum::Client do
-  let(:connection) { Magnum::Client.new("token") }
+  let(:client) { Magnum::Client.new("token") }
 
   describe "invalid endpoint" do
     before do
@@ -13,7 +13,7 @@ describe Magnum::Client do
     end
 
     it "raises error" do
-      expect { connection.get("foobar") }.
+      expect { client.get("foobar") }.
         to raise_error Magnum::Client::Error, "Invalid endpoint"
     end
   end
@@ -28,7 +28,7 @@ describe Magnum::Client do
     end
 
     it "raises error" do
-      expect { connection.get("profile") }.
+      expect { client.get("profile") }.
         to raise_error Magnum::Client::AuthError, "API key required"
     end
   end
@@ -43,7 +43,7 @@ describe Magnum::Client do
     end
 
     it "raises error" do
-      expect { connection.get("profile") }.
+      expect { client.get("profile") }.
         to raise_error Magnum::Client::AuthError, "API key is invalid"
     end
   end
