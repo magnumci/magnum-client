@@ -87,6 +87,24 @@ client.update_project(
 client.delete_project(12345)
 ```
 
+### Builds
+
+```ruby
+project_id = 12345
+
+# Get project builds
+client.builds(project_id)
+
+# Get a single build
+client.build(project_id, 12345)
+
+# Get build log
+client.build_log(project_id, 12345)
+
+# Delete a build
+client.delete_build(project_id, 12345)
+```
+
 ### Commit Payloads
 
 Send commit payload:
