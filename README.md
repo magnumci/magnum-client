@@ -2,7 +2,7 @@
 
 Ruby API wrapper for [Magnum CI](https://magnum-ci.com)
 
-![Build Status](https://magnum-ci.com/status/6bd1331c22d63cad996a90bc02710106.png)
+[![build status](https://magnum-ci.com/status/6bd1331c22d63cad996a90bc02710106.png)](https://magnum-ci.com/public/56ee5f54ab276bcc6396/builds)
 
 ## Install
 
