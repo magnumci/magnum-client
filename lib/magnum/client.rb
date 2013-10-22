@@ -24,11 +24,10 @@ module Magnum
     # Send commit payload data to magnum
     #
     # @param [String] project API token
-    # @param [String] provider name (github, bitbucket, gitlab, etc)
     # @param [Hash] payload data
     #
-    def self.send_payload(project_token, provider, data)
-      response = Faraday.post("https://magnum-ci.com/receive/#{provider}",
+    def self.send_payload(project_token, data)
+      response = Faraday.post("https://magnum-ci.com/receive",
         token: project_token,
         payload: data
       )
