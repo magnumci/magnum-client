@@ -1,0 +1,21 @@
+{
+  "id": 5442,
+  "project_id": 141,
+  "title": "[PASS] foobar #1 (master - 5f157317) by Dan Sosedoff",
+  "number": 1,
+  "commit": "6f1573173eea04a8dfa3912049b02beb0fbaf9f0",
+  "author": "Dan Sosedoff",
+  "committer": "Dan Sosedoff",
+  "message": "Remove coverage, tweak gitignore",
+  "branch": "master",
+  "state": "finished",
+  "status": "pass",
+  "result": 0,
+  "duration": 189.0,
+  "duration_string": "3m 9s",
+  "commit_url": "commit_url",
+  "compare_url": "compare_url",
+  "created_at": "2013-07-19T13:11:28-05:00",
+  "started_at": "2013-07-19T13:07:21-05:00",
+  "finished_at": "2013-07-19T13:10:30-05:00"
+}

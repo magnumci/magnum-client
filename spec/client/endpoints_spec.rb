@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe Magnum::Client::Endpoints do
-  let(:connection) { Magnum::Client.new("token") }
+  let(:client) { Magnum::Client.new("token") }
 
   describe "#authenticate" do
     context "blank credentials" do
@@ -13,7 +13,7 @@ describe Magnum::Client::Endpoints do
       end
 
       it "returns error" do
-        expect { connection.authenticate("", "") }.
+        expect { client.authenticate("", "") }.
           to raise_error Magnum::Client::Error, "User login or email is required"
       end
     end
@@ -27,7 +27,7 @@ describe Magnum::Client::Endpoints do
       end
 
       it "returns error" do
-        expect { connection.authenticate("foo", "bar") }.
+        expect { client.authenticate("foo", "bar") }.
           to raise_error Magnum::Client::Error, "Invalid credentials"
       end
     end
@@ -43,7 +43,7 @@ describe Magnum::Client::Endpoints do
     end
 
     it "returns user profile" do
-      profile = connection.profile
+      profile = client.profile
 
       expect(profile.id).to eq 1
       expect(profile.email).to eq "dan.sosedoff@gmail.com"
@@ -63,7 +63,7 @@ describe Magnum::Client::Endpoints do
     end
 
     it "returns collection of projects" do
-      projects = connection.projects
+      projects = client.projects
 
       expect(projects).to be_an Array
       expect(projects.size).to eq 1
@@ -86,7 +86,7 @@ describe Magnum::Client::Endpoints do
     end
 
     it "returns project details" do
-      project = connection.project(15)
+      project = client.project(15)
 
       expect(project.id).to eq 15
       expect(project.provider).to eq "github"
@@ -100,6 +100,74 @@ describe Magnum::Client::Endpoints do
       expect(project.created_at).not_to be_empty
       expect(project.updated_at).not_to be_empty
       expect(project.last_build_at).not_to be_empty
+    end
+  end
+
+  describe "#build" do
+    context "project does not exist" do
+      before do
+        stub_api(:get, "/projects/1/builds/1",
+          headers: {"X-API-KEY" => "token"},
+          status: 404,
+          body: fixture("project_not_found.json")
+        )
+      end
+
+      it "raises error" do
+        expect { client.build(1, 1) }.
+          to raise_error Magnum::Client::Error, "Project does not exist"
+      end
+    end
+
+    context "build does not exist" do
+      before do
+        stub_api(:get, "/projects/1/builds/1",
+          headers: {"X-API-KEY" => "token"},
+          status: 404,
+          body: fixture("build_not_found.json")
+        )
+      end
+
+      it "raises error" do
+        expect { client.build(1, 1) }.
+          to raise_error Magnum::Client::Error, "Build does not exist"
+      end
+    end
+
+    context "build exists" do
+      before do
+        stub_api(:get, "/projects/1/builds/1",
+          headers: {"X-API-KEY" => "token"},
+          status: 200,
+          body: fixture("build.json")
+        )
+      end
+
+      it "returns build details" do
+        build = client.build(1, 1)
+
+        expect(build).to include(
+          :id,
+          :project_id,
+          :title,
+          :number,
+          :commit,
+          :author,
+          :committer,
+          :message,
+          :branch,
+          :state,
+          :status,
+          :result,
+          :duration,
+          :duration_string,
+          :commit_url,
+          :compare_url,
+          :created_at,
+          :started_at,
+          :finished_at
+        )
+      end
     end
   end
 end
