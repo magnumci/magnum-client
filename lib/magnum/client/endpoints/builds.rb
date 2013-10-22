@@ -6,12 +6,16 @@ class Magnum::Client
         get("projects/#{project_id}/builds")
       end
 
-      def build(project_id, build_id)
-        get("projects/#{project_id}/builds/#{build_id}")
+      def build(project_id, id)
+        get("projects/#{project_id}/builds/#{id}")
       end
 
-      def delete_build(project_id, build_id)
-        delete("projects/#{project_id}/builds/#{build_id}")
+      def build_log(project_id, id)
+        get("projects/#{project_id}/builds/#{id}/log")
+      end
+
+      def delete_build(project_id, id)
+        delete("projects/#{project_id}/builds/#{id}")
       end
 
     end
