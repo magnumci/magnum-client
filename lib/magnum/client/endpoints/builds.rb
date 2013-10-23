@@ -14,6 +14,10 @@ class Magnum::Client
         get("projects/#{project_id}/builds/#{id}/log")
       end
 
+      def reset_build(project_id, id)
+        post("projects/#{project_id}/builds/#{id}/reset")
+      end
+
       def delete_build(project_id, id)
         delete("projects/#{project_id}/builds/#{id}")
       end
