@@ -186,5 +186,19 @@ describe Magnum::Client::Endpoints do
           to raise_error "Build is not finished"
       end
     end
+
+    context "build is finished" do
+      before do
+        stub_api(:post, "/projects/1/builds/1/reset",
+          headers: {"X-API-KEY" => "token"},
+          status: 200,
+          body: fixture("build_reset.json")
+        )
+      end
+
+      it "resets build" do
+        expect(client.reset_build(1,1)["reset"]).to eq true
+      end
+    end
   end
 end
