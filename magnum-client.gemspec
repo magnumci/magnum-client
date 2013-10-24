@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["dan.sosedoff@gmail.com"]
   spec.description   = %q{API client for Magnum CI}
   spec.summary       = %q{API client for Magnum CI}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/magnumci/magnum-client"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
