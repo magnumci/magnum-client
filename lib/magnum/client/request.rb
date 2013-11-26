@@ -2,10 +2,10 @@ class Magnum::Client
   module Request
     API_BASE = "https://magnum-ci.com"
 
-    def get(path, params={})    ; request(:get, path, params)    ; end
-    def post(path, params={})   ; request(:post, path, params)   ; end
-    def put(path, params={})    ; request(:put, path, params)    ; end
-    def delete(path, params={}) ; request(:delete, path, params) ; end
+    def get(path, params = {})    ; request(:get, path, params)    ; end
+    def post(path, params = {})   ; request(:post, path, params)   ; end
+    def put(path, params = {})    ; request(:put, path, params)    ; end
+    def delete(path, params = {}) ; request(:delete, path, params) ; end
 
     private
 
@@ -22,13 +22,7 @@ class Magnum::Client
         request.url(path, params)
       end
 
-      json = JSON.parse(response.body)
-
-      if response.success?
-        format_response(json)
-      else
-        handle_response_error(response, json)
-      end
+      handle_response(response)
     end
 
     def endpoint(url)
@@ -36,6 +30,16 @@ class Magnum::Client
         c.use(Faraday::Request::UrlEncoded)
         c.use(Faraday::Response::Logger) if @debug
         c.adapter(Faraday.default_adapter)
+      end
+    end
+
+    def handle_response(response)
+      json = JSON.parse(response.body)
+
+      if response.success?
+        format_response(json)
+      else
+        handle_response_error(response, json)
       end
     end
 
