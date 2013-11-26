@@ -123,7 +123,7 @@ bundle exec rake test
 
 ## License
 
-Copyright (c) 2013 Dan Sosedoff
+Copyright (c) 2013 Dan Sosedoff, Magnum CI
 
 MIT License
 
