@@ -1,8 +1,8 @@
 # magnum-client
 
-Ruby API wrapper for [Magnum CI](https://magnum-ci.com)
+Ruby client library for [Magnum CI](https://magnum-ci.com) API
 
-[![build status](https://magnum-ci.com/status/6bd1331c22d63cad996a90bc02710106.png)](https://magnum-ci.com/public/56ee5f54ab276bcc6396/builds)
+[![Build Status](https://magnum-ci.com/status/6bd1331c22d63cad996a90bc02710106.png)](https://magnum-ci.com/public/56ee5f54ab276bcc6396/builds) [![Code Climate](https://codeclimate.com/github/magnumci/magnum-client.png)](https://codeclimate.com/github/magnumci/magnum-client)
 
 ## Install
 
