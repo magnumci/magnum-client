@@ -49,15 +49,11 @@ client.authenticate("email", "password")
 
 ### User Profile
 
-Get user profile:
-
 ```ruby
+# Get user profile details
 client.profile
-```
 
-Update user profile:
-
-```ruby
+#Update user profile
 client.update_profile(login: "jimi", email: "jimi@hendrix.com")
 ```
 
