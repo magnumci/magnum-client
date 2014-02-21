@@ -1,7 +1,6 @@
 class Magnum::Client
   module Endpoints
     module Builds
-
       def builds(project_id)
         get("projects/#{project_id}/builds")
       end
@@ -21,7 +20,6 @@ class Magnum::Client
       def delete_build(project_id, id)
         delete("projects/#{project_id}/builds/#{id}")
       end
-
     end
   end
 end
