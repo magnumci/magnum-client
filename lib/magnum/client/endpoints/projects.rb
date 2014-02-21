@@ -1,31 +1,27 @@
 class Magnum::Client
-  module Endpoints
-    module Projects
+  module Endpoints::Projects
+    def projects
+      get("projects")
+    end
 
-      def projects
-        get("projects")
-      end
+    def project(id)
+      get("projects/#{id}")
+    end
 
-      def project(id)
-        get("projects/#{id}")
-      end
+    def project_config(id)
+      get("projects/#{id}/config")
+    end
 
-      def project_config(id)
-        get("projects/#{id}/config")
-      end
+    def create_project(options={})
+      post("projects", project: options)
+    end
 
-      def create_project(options={})
-        post("projects", project: options)
-      end
+    def update_project(project_id, options = {})
+      put("projects/#{project_id}", project: options)
+    end
 
-      def update_project(project_id, options={})
-        put("projects/#{project_id}", project: options)
-      end
-
-      def delete_project(project_id)
-        delete("projects/#{project_id}")
-      end
-      
+    def delete_project(project_id)
+      delete("projects/#{project_id}")
     end
   end
 end
