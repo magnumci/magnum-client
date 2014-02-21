@@ -106,7 +106,7 @@ client.delete_build(project_id, 12345)
 Send commit payload:
 
 ```ruby
-Magnum::Client.send_payload("project token", "provider", "data")
+Magnum::Client.send_payload("project token", "data")
 ```
 
 ## Testing
