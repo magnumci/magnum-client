@@ -2,6 +2,7 @@ require "magnum/client/endpoints/authentication"
 require "magnum/client/endpoints/profile"
 require "magnum/client/endpoints/projects"
 require "magnum/client/endpoints/builds"
+require "magnum/client/endpoints/payload"
 
 class Magnum::Client
   module Endpoints
@@ -9,5 +10,6 @@ class Magnum::Client
     include Profile
     include Projects
     include Builds
+    include Payload
   end
 end
