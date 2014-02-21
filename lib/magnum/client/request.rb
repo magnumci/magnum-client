@@ -10,17 +10,7 @@ class Magnum::Client
     private
 
     def request(method, path, params={})
-      path    = "/api/v1/#{path}"
-      headers = {"Accept" => "application/json"}
-
-      if @api_key
-        headers["X-API-KEY"] = @api_key
-      end
-
-      response = endpoint(API_BASE).send(method, path, params) do |request|
-        request.headers = headers
-        request.url(path, params)
-      end
+      response = make_request(method, "/api/v1/#{path}", params)
 
       handle_response(response)
     end
@@ -30,6 +20,19 @@ class Magnum::Client
         c.use(Faraday::Request::UrlEncoded)
         c.use(Faraday::Response::Logger) if @debug
         c.adapter(Faraday.default_adapter)
+      end
+    end
+
+    def make_request(method, path, params)
+      headers = {"Accept" => "application/json"}
+
+      if @api_key
+        headers["X-API-KEY"] = @api_key
+      end
+
+      endpoint(API_BASE).send(method, path, params) do |request|
+        request.headers = headers
+        request.url(path, params)
       end
     end
 
